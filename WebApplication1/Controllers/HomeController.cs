@@ -14,13 +14,13 @@ namespace WebApplication1.Controllers
     {
         public async Task<ActionResult> Index()
         {
-            var account = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
-            var client = account.CreateCloudQueueClient();
-            var q = client.GetQueueReference("queue");
+            //var account = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
+            //var client = account.CreateCloudQueueClient();
+            //var q = client.GetQueueReference("queue");
 
-            await q.CreateIfNotExistsAsync();
+            //await q.CreateIfNotExistsAsync();
 
-            await q.AddMessageAsync(new CloudQueueMessage("Hello World!"));
+            //await q.AddMessageAsync(new CloudQueueMessage("Hello World!"));
 
             return View();
         }
