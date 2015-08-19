@@ -12,7 +12,6 @@ namespace WebJob1
     {
         static void Main()
         {
-            Console.WriteLine(CurrentFileVersion);
 
             var host = new JobHost();
             // The following code ensures that the WebJob will be running continuously
