@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
@@ -15,8 +16,15 @@ namespace WebJob1
         // on an Azure Queue called queue.
         public static void ProcessQueueMessage([QueueTrigger("queue")] string message, TextWriter log)
         {
-            log.WriteLine(message);
-            Trace.WriteLine("my trace:" + message);
+            log.WriteLine(CurrentFileVersion + ": " + message);
+        }
+
+        private static Version CurrentFileVersion
+        {
+            get
+            {
+                return Assembly.GetExecutingAssembly().GetName().Version;
+            }
         }
     }
 }
